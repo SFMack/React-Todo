@@ -10,9 +10,7 @@ export default class TodoList extends Component {
 				<h1>Don't Forget!</h1>
 				<TodoForm todo={this.props.state} addtask={this.props.addtask} />
 				<div>
-					{state.map(todo => (
-						<Todo key={todo.id} data={todo} />
-					))}
+					{state ? state.map(todo => <Todo key={todo.id} data={todo} />) : null}
 				</div>
 			</>
 		);

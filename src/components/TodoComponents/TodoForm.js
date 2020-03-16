@@ -12,7 +12,7 @@ export default class TodoForm extends Component {
 	handleSubmit = e => {
 		e.preventDefault();
 		const { todo } = this.props;
-		this.props.addtask(todo);
+		this.setState(this.props.addtask([...todo, this.state]));
 	};
 
 	clearClick = e => {

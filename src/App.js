@@ -1,29 +1,30 @@
 import React, { Component } from 'react';
 import TodoList from './components/TodoComponents/TodoList';
 
-const data = [
-	{
-		task: 'Peel Carrots',
-		completed: false,
-		id: 1
-	},
-	{
-		task: 'Supreme Oranges',
-		completed: false,
-		id: 2
-	}
-];
+// const data = [
+// 	{
+// 		task: 'Peel Carrots',
+// 		completed: false,
+// 		id: 1
+// 	},
+// 	{
+// 		task: 'Supreme Oranges',
+// 		completed: false,
+// 		id: 2
+// 	}
+// ];
 
 export default class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			todo: data
+			todo: ''
 		};
 	}
 
 	clearClick = e => {
 		e.preventDefault();
+		this.setState({ todo: [] });
 		console.log('Clear clicked');
 	};
 
@@ -33,12 +34,9 @@ export default class App extends Component {
 	};
 
 	addTask = task => {
-		console.log('add item: ', task);
-		console.log(task.task);
 		this.setState({
-			todo: [...this.state.todo, task]
+			todo: task
 		});
-		console.log(this.state.todo);
 	};
 
 	render() {
