@@ -1,5 +1,10 @@
 import React from 'react';
 
-export default function Todo() {
-	return <div>To Do Component</div>;
+export default function Todo(props) {
+	const { task } = props.data;
+	return (
+		<div>
+			<h3>{task}</h3>
+		</div>
+	);
 }

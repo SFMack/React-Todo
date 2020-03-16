@@ -1,27 +1,26 @@
 import React, { Component } from 'react';
 import TodoList from './components/TodoComponents/TodoList';
-import TodoForm from './components/TodoComponents/TodoForm';
 
-class App extends Component {
+const data = [
+	{
+		task: 'Peel Carrots',
+		completed: false,
+		id: 1
+	},
+	{
+		task: 'Supreme Oranges',
+		completed: false,
+		id: 2
+	}
+];
+
+export default class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			todo: [
-				{
-					task: 'Peel Carrots',
-					completed: false
-				},
-				{
-					task: 'Supreme Oranges',
-					completed: false
-				}
-			]
+			todo: data
 		};
 	}
-
-	submitTask = e => {
-		e.preventDefault();
-	};
 
 	clearClick = e => {
 		e.preventDefault();
@@ -29,23 +28,26 @@ class App extends Component {
 	};
 
 	changeHandler = e => {
-		e.preventDefault();
-		const newTask = e.target.value;
-		console.log(newTask);
+		this.setState({ value: e.target.value });
+		console.log(e.target.value);
+	};
+
+	addTask = task => {
+		console.log('add item: ', task);
+		console.log(task.task);
+		this.setState({
+			todo: [...this.state.todo, task]
+		});
+		console.log(this.state.todo);
 	};
 
 	render() {
+		const { todo } = this.state;
+
 		return (
 			<div>
-				<TodoForm
-					submitClick={this.submitClick}
-					clearClick={this.clearClick}
-					changeHandler={this.changeHandler}
-				/>
-				<TodoList array={this.state.todo} />
+				<TodoList state={todo} addtask={this.addTask} />
 			</div>
 		);
 	}
 }
-
-export default App;
